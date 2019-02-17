@@ -1,6 +1,6 @@
-![momenton](https://s3-ap-southeast-2.amazonaws.com/aws-ecs-setup/momenton_logo.PNG)
-
 # DevOps Challenge:
+
+![momenton](https://s3-ap-southeast-2.amazonaws.com/aws-ecs-setup/momenton_logo.PNG)
 
 ## Infrastructure problem:
 
@@ -46,3 +46,37 @@ vpc.tf
 - Creates the routing table
 - Associates routing table to subnet
 - Creates VPC security group
+
+* All variables defined in a variables.tf file which is not available in this repo for obvious reasons.
+
+### Setup IAM Roles:
+
+IAM Roles are required for the agent and service scheduler. They will be passed to the instances after they have launched.
+
+### App load balancer required to setup
+
+To setup the load balancer you will need to create a minimum of two subnets across two different availability zones.
+
+### Auto scaling group and launch configuration:
+
+A launch config is like a template that the asg will use to create your instances.
+
+### ECS Cluster:
+
+Create the ecs cluster using variables specified in your env variables file.
+
+### Task definition:
+
+Create your task definition script which will define the containers used in the cluster.
+
+### Docker Images:
+
+I used docker and ECR for my kong image. In order to auth with AWS from docker cli, you will first need to install AWS CLI for windows in my case. The run the following :
+
+```
+Authenticate docker with AWS using the AWS CLI:
+
+aws ecr get-login --region us-west-1 --no-include-email
+```
+
+The returned URI can be used to push your image to ECR repo.
