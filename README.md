@@ -37,6 +37,8 @@ Server: Docker Engine - Community
 
 AWS ECS, EC2, ECR
 
+![diagram](https://s3-ap-southeast-2.amazonaws.com/aws-ecs-setup/diagram.PNG)
+
 ### VPC Setup:
 
 vpc.tf
